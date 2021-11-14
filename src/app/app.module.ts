@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 import { ProductListItemComponent } from './product-list-item/product-list-item.component';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ProductListItemComponent } from './product-list-item/product-list-item.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
