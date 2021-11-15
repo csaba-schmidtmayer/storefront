@@ -9,6 +9,7 @@ import { ProductListItemComponent } from './product-list-item/product-list-item.
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
 import { HeaderComponent } from './header/header.component';
+import { ConfirmCartComponent } from './confirm-cart/confirm-cart.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HeaderComponent } from './header/header.component';
     ProductListItemComponent,
     ProductListComponent,
     ProductItemDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    ConfirmCartComponent
   ],
   imports: [
     BrowserModule,
