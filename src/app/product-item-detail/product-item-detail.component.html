@@ -1,1 +1,13 @@
-<p>product-item-detail works!</p>
+<div class="detail-container">
+  <img class="product-image" src="{{product.imageUrl}}" />
+  <div class="detail-item">
+    <h3>{{product.name}}</h3>
+    <p>$ {{product.price}}</p>
+    <p>{{product.description}}</p>
+    <form (ngSubmit)="addToCart()">
+      <input name="quantity" class="number-input" type="number" [(ngModel)]="quantity"/>
+      <br>
+      <input type="submit" value="Add to cart" class="submit-button" />
+    </form>
+  </div>
+</div>
