@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { ProductListItemComponent } from './product-list-item/product-list-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
@@ -18,7 +19,8 @@ import { ProductItemDetailComponent } from './product-item-detail/product-item-d
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

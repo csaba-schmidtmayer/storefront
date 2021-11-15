@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { ManageCartService } from '../manage-cart.service';
+import { ManageDbService } from '../manage-db.service';
 
 import Product from '../models/product';
 
@@ -9,24 +12,35 @@ import Product from '../models/product';
   templateUrl: './product-item-detail.component.html',
   styleUrls: ['./product-item-detail.component.css']
 })
-export class ProductItemDetailComponent implements OnInit {
-  @Input() product!: Product;
+export class ProductItemDetailComponent implements OnInit, OnDestroy {
+  private _routeParams!: Subscription;
+  private _productData!: Subscription;
+  id!: number;
+  product!: Product;
   quantity: number = 0;
 
-  constructor(private cartService: ManageCartService) {
-    this.product = {
-      "id": 1,
-      "name": "Book",
-      "price": 9.99,
-      "imageUrl": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      "description": "You can read it!"
-    };
+  constructor(
+    private cartService: ManageCartService,
+    private route: ActivatedRoute,
+    private dbService: ManageDbService
+  ) {
   }
 
   ngOnInit(): void {
+    this._routeParams = this.route.params.subscribe((params) => {
+      this.id = parseInt(params['id']);
+    });
+    this._productData = this.dbService.getProductList().subscribe((data) => {
+      this.product = data.filter((product) => (product.id === this.id))[0];
+    });
   }
 
   addToCart(): void {
     this.cartService.addToCart(this.product, this.quantity);
+  }
+
+  ngOnDestroy(): void {
+    this._routeParams.unsubscribe();
+    this._productData.unsubscribe();
   }
 }
