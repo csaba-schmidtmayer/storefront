@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background: #33B5E5;
+  color: #fff;
+  padding: 12px;
+}
+
+.link {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+a {
+  color: #ffffff;
+}
