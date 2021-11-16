@@ -1,1 +1,11 @@
-<p>cart-item works!</p>
+<div class="product-container">
+  <a routerLink="/products/{{product.id}}">
+    <img class="cart-product-image" src="{{product.imageUrl}}" />
+  </a>
+  <div>
+    <h3>{{product.name}}</h3>
+    <p>$ {{product.price}}</p>
+    <input name="quantity" class="number-input" type="number" [(ngModel)]="quantity"/>
+    <p>Subtotal: $ {{product.price * quantity}}</p>
+  </div>
+</div>
