@@ -13,3 +13,8 @@ type Cart = {
 };
 
 export default Cart;
+
+export {
+  Cart,
+  CartItem
+};

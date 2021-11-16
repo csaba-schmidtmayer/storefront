@@ -1,1 +1,6 @@
-<p>confirm-cart works!</p>
+<div class="cart-container">
+  <div class="cart-items">
+    <app-cart-item *ngFor="let cartItem of cartItemList" [product]="cartItem.product" [quantity]="cartItem.quantity"></app-cart-item>
+    <h3>Total: $ {{cart.cartValue}}</h3>
+  </div>
+</div>

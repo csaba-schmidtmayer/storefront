@@ -9,7 +9,7 @@ import Product from '../models/product';
 })
 export class CartItemComponent implements OnInit {
   @Input() product!: Product;
-  quantity: number = 0;
+  @Input() quantity!: number;
 
   constructor() { }
 
