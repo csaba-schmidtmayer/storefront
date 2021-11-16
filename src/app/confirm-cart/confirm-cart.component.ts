@@ -12,14 +12,30 @@ import { Cart, CartItem } from '../models/cart';
 export class ConfirmCartComponent implements OnInit {
   cart!: Cart;
   cartItemList!: CartItem[];
+  fullName: string = '';
+  address: string = '';
+  creditCard: string = '';
 
   constructor(private cartService: ManageCartService) { }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
+    this._getItemList();
+  }
+
+  _getItemList(): void {
     if (this.cart.products !== null) {
       this.cartItemList = Object.keys(this.cart.products).map((key) => (this.cart.products![parseInt(key)]));
     }
   }
 
+  changeQuantity(cartItem: CartItem): void {
+    this.cart = this.cartService.changeQuantity(cartItem.product.id, cartItem.quantity);
+    console.log(this.cart.cartValue);
+    this._getItemList();
+  }
+
+  sendOrder(): void {
+    console.log(this.cart);
+  }
 }

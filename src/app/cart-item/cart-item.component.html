@@ -5,7 +5,7 @@
   <div class="cart-item-details">
     <h3>{{product.name}}</h3>
     <p>$ {{product.price}}</p>
-    <input name="quantity" class="number-input" type="number" [(ngModel)]="quantity"/>
+    <input name="quantity" class="number-input" type="number" [(ngModel)]="quantity" (ngModelChange)="changeQuantityInner($event)"/>
     <p>Subtotal: $ {{product.price * quantity}}</p>
   </div>
 </div>

@@ -1,6 +1,26 @@
 <div class="cart-container">
   <div class="cart-items">
-    <app-cart-item *ngFor="let cartItem of cartItemList" [product]="cartItem.product" [quantity]="cartItem.quantity"></app-cart-item>
-    <h3>Total: $ {{cart.cartValue}}</h3>
+    <div class="empty-cart-message" *ngIf="cartItemList === undefined || cartItemList.length === 0">
+      <p>There are no items in your cart.</p>
+    </div>
+    <app-cart-item *ngFor="let cartItem of cartItemList" [product]="cartItem.product" [quantity]="cartItem.quantity" (changeQuantity)="changeQuantity($event)"></app-cart-item>
+    <h3 *ngIf="cartItemList !== undefined && cartItemList.length !== 0">Total: $ {{cart.cartValue}}</h3>
+  </div>
+  <div class="cart-panel" *ngIf="cartItemList !== undefined && cartItemList.length !== 0">
+    <form #orderForm="ngForm" (ngSubmit)="sendOrder()">
+      <input type="text" name="full-name" [(ngModel)]="fullName" required min-length="6">
+      <br>
+      <label for="full-name">Full name</label>
+      <br>
+      <input type="text" name="address" [(ngModel)]="address" required min-length="12">
+      <br>
+      <label for="address">Address</label>
+      <br>
+      <input type="text" name="credit-card" [(ngModel)]="creditCard" required min-length="8">
+      <br>
+      <label for="credit-card">Credit card number</label>
+      <br>
+      <button type="submit" class="submit-button" [disabled]="orderForm.invalid">Send order</button>
+    </form>
   </div>
 </div>

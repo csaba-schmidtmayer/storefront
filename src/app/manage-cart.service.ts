@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 import Cart from './models/cart';
 import Product from './models/product';
@@ -7,6 +7,7 @@ import Product from './models/product';
   providedIn: 'root'
 })
 export class ManageCartService {
+  change: EventEmitter<Cart> = new EventEmitter();
   cart: Cart;
 
   constructor() {
@@ -44,9 +45,16 @@ export class ManageCartService {
     return this.cart;
   }
 
-  changeQuantity(productId: number, quantity: number): void {
-    if (this.cart.products !== null && this.cart.products[productId] === undefined) {
-      this.cart.products[productId].quantity = quantity;
+  changeQuantity(productId: number, quantity: number): Cart {
+    if (this.cart.products !== null && this.cart.products[productId] !== undefined) {
+      this.cart.cartValue += (quantity - this.cart.products[productId].quantity) * this.cart.products[productId].product.price;
+      if (quantity === 0) {
+        delete this.cart.products[productId];
+      }
+      else {
+        this.cart.products[productId].quantity = quantity;
+      }
     }
+    return this.cart;
   }
 }

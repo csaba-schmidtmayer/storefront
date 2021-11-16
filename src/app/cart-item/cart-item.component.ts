@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { ManageCartService } from '../manage-cart.service';
 
 import Product from '../models/product';
 
@@ -10,10 +12,18 @@ import Product from '../models/product';
 export class CartItemComponent implements OnInit {
   @Input() product!: Product;
   @Input() quantity!: number;
+  @Output() changeQuantity: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(private cartService: ManageCartService) {
+  }
 
   ngOnInit(): void {
   }
 
+  changeQuantityInner(quantity:number): void {
+    this.changeQuantity.emit({
+      product: this.product,
+      quantity: quantity
+    });
+  }
 }
