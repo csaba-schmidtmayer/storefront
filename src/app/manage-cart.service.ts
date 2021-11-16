@@ -38,6 +38,15 @@ export class ManageCartService {
       }
       this.cart.cartValue += product.price * quantity;
     }
-    console.log(this.cart);
+  }
+
+  getCart(): Cart {
+    return this.cart;
+  }
+
+  changeQuantity(productId: number, quantity: number): void {
+    if (this.cart.products !== null && this.cart.products[productId] === undefined) {
+      this.cart.products[productId].quantity = quantity;
+    }
   }
 }
