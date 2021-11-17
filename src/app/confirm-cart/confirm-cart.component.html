@@ -16,7 +16,7 @@
       <br>
       <label for="address">Address</label>
       <br>
-      <input type="text" name="credit-card" [(ngModel)]="creditCard" required min-length="8">
+      <input type="text" name="credit-card" [(ngModel)]="creditCard" required pattern="^[0-9]{8,}$">
       <br>
       <label for="credit-card">Credit card number</label>
       <br>
