@@ -32,7 +32,6 @@ export class ConfirmCartComponent implements OnInit {
 
   changeQuantity(cartItem: CartItem): void {
     this.cart = this.cartService.changeQuantity(cartItem.product.id, cartItem.quantity);
-    console.log(this.cart.cartValue);
     this._getItemList();
   }
 
