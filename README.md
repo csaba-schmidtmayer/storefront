@@ -15,8 +15,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
   1. Clone this repository to your local machine.
   2. `cd` into the project folder.
-  3. Start the development server by running `ng serve`.
-  4. Open `http://localhost:4200/` in your browser.
+  3. Install dependencies by running `npm install`.
+  4. Start the development server by running `ng serve`.
+  5. Open `http://localhost:4200/` in your browser.
 
 ### Exploring the application
 
