@@ -1,27 +1,53 @@
 # Storefront
 
+This is the submission project code of the **Angular Fundamentals** course in Udacity's Full Stack JavaScript Developer Nanodegree Program.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
 
-## Development server
+## Using the application
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Starting the application
 
-## Code scaffolding
+**Prerequisites:**
+  - Angular CLI is installed globally on your machine. To install it, run `npm install -g @angular/cli`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Steps:**
 
-## Build
+  1. Clone this repository to your local machine.
+  2. `cd` into the project folder.
+  3. Start the development server by running `ng serve`.
+  4. Open `http://localhost:4200/` in your browser.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Exploring the application
 
-## Running unit tests
+Storefront is a single-page web application. It mocks the usage of a generic web store by allowing the user to view items, add or remove items to/from the shopping cart, and place an order by supplying the necessary personal information.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Navigation
 
-## Running end-to-end tests
+1. The navigation bar at the top of the application can be used to navigate between the list of orderable items and the shopping cart.
+2. Clicking on the photo of any item shows its details.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+#### The product list
 
-## Further help
+The product list shows all available items and their overview (photo, name, price). You can also directly add any product to the shopping cart from this page by setting the desired amount and clicking `Add to cart`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### The product detail page
+
+Each item has its dedicated detail page, where additional information can be read about it. You can add the item to the shopping cart by setting the desired amount and clicking `Add to cart`. Clicking the link *Back to the product list* takes you back to the Product list page.
+
+#### The shopping cart
+
+The shopping cart page lists the products placed in the cart, the amount, and the sub- and grand total of the cart value. You can adjust the amount of any product directly, or delete them by setting the amount to 0.
+
+You can place the order by filling in the required personal information, then clicking `Send order`. You need to supply the following information:
+  - Full name (at least six characters)
+  - Address (at least 12 characters)
+  - Credit card number (at least eight characters)
+
+#### Order confirmation
+
+Once the order is finalized and submitted, a confirmation page is shown that summarizes the most important information about the order.
+
+## Credits
+
+The data and the stylesheets in the application come from [the starter code of the project](https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter).
