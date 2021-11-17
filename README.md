@@ -29,7 +29,7 @@ Storefront is a single-page web application. It mocks the usage of a generic web
 
 #### The product list
 
-The product list shows all available items and their overview (photo, name, price). You can also directly add any product to the shopping cart from this page by setting the desired amount and clicking `Add to cart`.
+The product list shows all available items and their overview (photo, name, price). You can also directly add any product to the shopping cart from this page by setting the desired amount and clicking `Add to cart`. The amount is set back to zero and the button disabled after an item is successfully added to the cart to prevent the user from inadvertently add multiple batches through multiple clicks.
 
 #### The product detail page
 
