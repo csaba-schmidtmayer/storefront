@@ -4,7 +4,7 @@
       <p>There are no items in your cart.</p>
     </div>
     <app-cart-item *ngFor="let cartItem of cartItemList" [product]="cartItem.product" [quantity]="cartItem.quantity" (changeQuantity)="changeQuantity($event)"></app-cart-item>
-    <h3 *ngIf="cartItemList !== undefined && cartItemList.length !== 0">Total: $ {{cart.cartValue}}</h3>
+    <h3 *ngIf="cartItemList !== undefined && cartItemList.length !== 0">Total: {{cart.cartValue | currency: 'USD'}}</h3>
   </div>
   <div class="cart-panel" *ngIf="cartItemList !== undefined && cartItemList.length !== 0">
     <form #orderForm="ngForm" (ngSubmit)="sendOrder()">
