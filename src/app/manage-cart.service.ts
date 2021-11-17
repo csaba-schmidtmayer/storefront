@@ -2,19 +2,25 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 import Cart from './models/cart';
 import Product from './models/product';
+import Order from './models/order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManageCartService {
   change: EventEmitter<Cart> = new EventEmitter();
-  cart: Cart;
+  cart!: Cart;
+  order!: Order;
 
   constructor() {
+    this._emptyCart();
+  }
+
+  private _emptyCart(): void {
     this.cart = {
       products: null,
       cartValue: 0
-    }
+    };
   }
 
   addToCart(product: Product, quantity: number): void {
@@ -57,4 +63,26 @@ export class ManageCartService {
     }
     return this.cart;
   }
+
+  submitOrder(fullName: string, address: string, creditCard: string): void {
+    this.order = {
+      cart: this.cart,
+      fullName: fullName,
+      address: address,
+      creditCard: creditCard
+    };
+  }
+
+  getOrder(): Order {
+    const placedOrder = this.order;
+    this.order = {
+      cart: this.cart,
+      fullName: '',
+      address: '',
+      creditCard: ''
+    };
+    this._emptyCart();
+    return placedOrder;
+  }
+
 }

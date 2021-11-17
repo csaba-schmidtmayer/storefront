@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ManageCartService } from '../manage-cart.service';
 
@@ -16,7 +17,7 @@ export class ConfirmCartComponent implements OnInit {
   address: string = '';
   creditCard: string = '';
 
-  constructor(private cartService: ManageCartService) { }
+  constructor(private router: Router, private cartService: ManageCartService) { }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
@@ -36,6 +37,7 @@ export class ConfirmCartComponent implements OnInit {
   }
 
   sendOrder(): void {
-    console.log(this.cart);
+    this.cartService.submitOrder(this.fullName, this.address, this.creditCard);
+    this.router.navigate(['/place-order']);
   }
 }

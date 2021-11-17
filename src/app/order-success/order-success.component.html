@@ -1,1 +1,9 @@
-<p>order-success works!</p>
+<div class="confirmation-container" *ngIf="orderDetails !== undefined">
+  <h3 class="confirmation-header">Dear {{orderDetails.fullName}}!</h3>
+  <p>Your order totalling $ {{orderDetails.cart.cartValue}} has been placed successfully. Please allow up to 3 working days for the shipment to arrive to {{orderDetails.address}}.</p>
+  <br>
+  <p>Thank you for choosing us, we hope to see you again soon!</p>
+</div>
+<div class="confirmation-container" *ngIf="orderDetails === undefined">
+  <p>No order has been placed yet</p>
+</div>
