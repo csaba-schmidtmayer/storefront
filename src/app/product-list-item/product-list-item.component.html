@@ -5,8 +5,8 @@
   <h3>{{product.name}}</h3>
   <p>{{product.price | currency: 'USD'}}</p>
   <form (ngSubmit)="addToCart()">
-    <input name="quantity" class="number-input" type="number" [(ngModel)]="quantity"/>
+    <input name="quantity" class="number-input" type="number" [(ngModel)]="quantity" #quant="ngModel" min="1">
     <br>
-    <input type="submit" value="Add to cart" class="submit-button" />
+    <input type="submit" value="Add to cart" class="submit-button" [disabled]="quant.invalid"/>
   </form>
 </div>

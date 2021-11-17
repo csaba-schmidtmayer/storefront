@@ -49,3 +49,9 @@ form {
     background-color: #0b5ed7;
     border-color: #0a58ca;
 }
+
+.submit-button:disabled {
+  background-color: #b1b6bf;
+  border-color: #b1b6bf;
+  cursor: default;
+}
